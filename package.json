@@ -1,0 +1,20 @@
+{
+  "name": "GitProFlow-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo ok"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slavahatnuke/gfp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/slavahatnuke/gfp/issues"
+  },
+  "homepage": "https://github.com/slavahatnuke/gfp#readme"
+}
