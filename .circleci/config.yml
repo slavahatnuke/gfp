@@ -8,3 +8,30 @@ jobs:
       - checkout
       - run: npm install
       - run: npm test
+      - deploy:
+          name: Staging deployment
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              echo "Deployment here ....";
+
+              #GitProFlow / Circle CI / Development hook
+              export GITPROFLOW_SERVICE="github"; \
+              export GITPROFLOW_DEPLOYMENT_ENVIRONMENT="staging"; \
+              export GITPROFLOW_CIRCLE_CI_WEBHOOK="https://slavagitproflow.localtunnel.me/circleci/webhook"; \
+              export GITPROFLOW_USERNAME="${CIRCLE_PROJECT_USERNAME}"; \
+              export GITPROFLOW_REPO="${CIRCLE_PROJECT_REPONAME}"; \
+              export GITPROFLOW_BRANCH="${CIRCLE_BRANCH}"; \
+              \
+              curl \
+                  -H "Content-Type: application/json" \
+                  -X POST \
+                  -d "{ \
+                       \"service\": \"${GITPROFLOW_SERVICE}\", \
+                       \"repo\": \"${GITPROFLOW_REPO}\", \
+                       \"username\": \"${GITPROFLOW_USERNAME}\", \
+                       \"branch\": \"${GITPROFLOW_BRANCH}\", \
+                       \"environment\": \"${GITPROFLOW_DEPLOYMENT_ENVIRONMENT}\" \
+                   }" \
+                  "${GITPROFLOW_CIRCLE_CI_WEBHOOK}" ;
+
+            fi
