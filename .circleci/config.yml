@@ -14,7 +14,7 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               echo "Deployment here ....";
 
-              export GITFLOWPRO_DEPLOYMENT_WEBHOOK="https://slavagitproflow.localtunnel.me/deployment/webhook"; \
+              export GITFLOWPRO_DEPLOYMENT_WEBHOOK="http://952050ae.ngrok.io/deployment/webhook"; \
               export GITFLOWPRO_DEPLOYMENT_ENVIRONMENT="staging"; \
               export GITFLOWPRO_DEPLOYMENT_SERVICE="github"; \
               export GITFLOWPRO_DEPLOYMENT_USERNAME="${CIRCLE_PROJECT_USERNAME}"; \
@@ -40,7 +40,7 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "production" ]; then
               echo "Deployment here ....";
 
-              export GITFLOWPRO_DEPLOYMENT_WEBHOOK="https://slavagitproflow.localtunnel.me/deployment/webhook"; \
+              export GITFLOWPRO_DEPLOYMENT_WEBHOOK="http://952050ae.ngrok.io/deployment/webhook"; \
               export GITFLOWPRO_DEPLOYMENT_ENVIRONMENT="production"; \
               export GITFLOWPRO_DEPLOYMENT_SERVICE="github"; \
               export GITFLOWPRO_DEPLOYMENT_USERNAME="${CIRCLE_PROJECT_USERNAME}"; \
