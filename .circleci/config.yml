@@ -14,8 +14,6 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               echo "staging > Deployment here ....";
 
-#              sleep 60
-
               export GITFLOWPRO_DEPLOYMENT_WEBHOOK="https://slavagitproflow.localtunnel.me/deployment/webhook"; \
               export GITFLOWPRO_DEPLOYMENT_ENVIRONMENT="staging"; \
               export GITFLOWPRO_DEPLOYMENT_SERVICE="github"; \
@@ -41,8 +39,6 @@ jobs:
           command: |
             if [ "${CIRCLE_BRANCH}" == "production" ]; then
               echo "production > Deployment here ....";
-
-#              sleep 5
 
               export GITFLOWPRO_DEPLOYMENT_WEBHOOK="https://slavagitproflow.localtunnel.me/deployment/webhook"; \
               export GITFLOWPRO_DEPLOYMENT_ENVIRONMENT="production"; \
