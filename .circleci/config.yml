@@ -12,7 +12,9 @@ jobs:
           name: Staging deployment
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              echo "Deployment here ....";
+              echo "staging > Deployment here ....";
+
+              sleep 60
 
               export GITFLOWPRO_DEPLOYMENT_WEBHOOK="https://slavagitproflow.localtunnel.me/deployment/webhook"; \
               export GITFLOWPRO_DEPLOYMENT_ENVIRONMENT="staging"; \
@@ -38,7 +40,9 @@ jobs:
           name: Production deployment
           command: |
             if [ "${CIRCLE_BRANCH}" == "production" ]; then
-              echo "Deployment here ....";
+              echo "production > Deployment here ....";
+
+              sleep 5
 
               export GITFLOWPRO_DEPLOYMENT_WEBHOOK="https://slavagitproflow.localtunnel.me/deployment/webhook"; \
               export GITFLOWPRO_DEPLOYMENT_ENVIRONMENT="production"; \
