@@ -14,7 +14,7 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               echo "staging > Deployment here ....";
 
-              export GITFLOWPRO_DEPLOYMENT_WEBHOOK="https://slavagitproflow.localtunnel.me/deployment/webhook"; \
+              export GITFLOWPRO_DEPLOYMENT_WEBHOOK="https://slavagitproflow.localtunnel.me/deployment/webhook/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXBvc2l0b3J5X2Z1bGxfbmFtZSI6InNsYXZhaGF0bnVrZS9nZnAiLCJpYXQiOjE1MTQ0MTgxNzUsImV4cCI6MjE0NTU3MDE3NX0.4gqAioRBHbWjoBB8bIZx5WuC6BXvS1Oe37AxI28O2jU"; \
               export GITFLOWPRO_DEPLOYMENT_ENVIRONMENT="staging"; \
               export GITFLOWPRO_DEPLOYMENT_SERVICE="github"; \
               export GITFLOWPRO_DEPLOYMENT_USERNAME="${CIRCLE_PROJECT_USERNAME}"; \
@@ -40,7 +40,7 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "production" ]; then
               echo "production > Deployment here ....";
 
-              export GITFLOWPRO_DEPLOYMENT_WEBHOOK="https://slavagitproflow.localtunnel.me/deployment/webhook"; \
+              export GITFLOWPRO_DEPLOYMENT_WEBHOOK="https://slavagitproflow.localtunnel.me/deployment/webhook/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXBvc2l0b3J5X2Z1bGxfbmFtZSI6InNsYXZhaGF0bnVrZS9nZnAiLCJpYXQiOjE1MTQ0MTgxNzUsImV4cCI6MjE0NTU3MDE3NX0.4gqAioRBHbWjoBB8bIZx5WuC6BXvS1Oe37AxI28O2jU"; \
               export GITFLOWPRO_DEPLOYMENT_ENVIRONMENT="production"; \
               export GITFLOWPRO_DEPLOYMENT_SERVICE="github"; \
               export GITFLOWPRO_DEPLOYMENT_USERNAME="${CIRCLE_PROJECT_USERNAME}"; \
