@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: node:6
-    working_directory: ~/gpf
+    working_directory: ~/project
     steps:
       - checkout
       - run: npm install
@@ -14,7 +14,7 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               echo "staging > Deployment here ....";
 
-              export GITFLOWPRO_DEPLOYMENT_WEBHOOK="https://slavagitproflow.localtunnel.me/deployment/webhook/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNsYXZhaGF0bnVrZSIsInJlcG8iOiJnZnAiLCJpYXQiOjE1MTQ0MjAzNjcsImV4cCI6MjE0NTU3MjM2N30._7CazRoustcY_gTvzADomoHB6Z1xhJ0iTyGBG4L8Gws"; \
+              export GITFLOWPRO_DEPLOYMENT_WEBHOOK="https://slavagitproflow.localtunnel.me/deployment/webhook/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNsYXZhaGF0bnVrZSIsInJlcG8iOiJzbGF2YWhhdG51a2UvZ2ZwIiwiaWF0IjoxNTE1MTExNjY3LCJleHAiOjIxNDYyNjM2Njd9.rwRNAZm1IJipcrLdGKKG5LAnCKUgJGYVHLorsXwGQoU"; \
               export GITFLOWPRO_DEPLOYMENT_ENVIRONMENT="staging"; \
               export GITFLOWPRO_DEPLOYMENT_SERVICE="github"; \
               export GITFLOWPRO_DEPLOYMENT_BRANCH="${CIRCLE_BRANCH}"; \
@@ -36,7 +36,7 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "production" ]; then
               echo "production > Deployment here ....";
 
-              export GITFLOWPRO_DEPLOYMENT_WEBHOOK="https://slavagitproflow.localtunnel.me/deployment/webhook/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNsYXZhaGF0bnVrZSIsInJlcG8iOiJnZnAiLCJpYXQiOjE1MTQ0MjAzNjcsImV4cCI6MjE0NTU3MjM2N30._7CazRoustcY_gTvzADomoHB6Z1xhJ0iTyGBG4L8Gws"; \
+              export GITFLOWPRO_DEPLOYMENT_WEBHOOK="https://slavagitproflow.localtunnel.me/deployment/webhook/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNsYXZhaGF0bnVrZSIsInJlcG8iOiJzbGF2YWhhdG51a2UvZ2ZwIiwiaWF0IjoxNTE1MTExNjY3LCJleHAiOjIxNDYyNjM2Njd9.rwRNAZm1IJipcrLdGKKG5LAnCKUgJGYVHLorsXwGQoU"; \
               export GITFLOWPRO_DEPLOYMENT_ENVIRONMENT="production"; \
               export GITFLOWPRO_DEPLOYMENT_SERVICE="github"; \
               export GITFLOWPRO_DEPLOYMENT_BRANCH="${CIRCLE_BRANCH}"; \
