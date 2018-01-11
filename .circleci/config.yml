@@ -2,52 +2,20 @@ version: 2
 jobs:
   build:
     docker:
-      - image: node:6
-    working_directory: ~/project
+      - image: node:8
     steps:
       - checkout
-      - run: npm install
-      - run: npm test
+      - run: echo "run-tests.sh"
       - deploy:
-          name: Staging deployment
+          name: Staging
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              echo "staging > Deployment here ....";
-
-              export GITFLOWPRO_DEPLOYMENT_WEBHOOK="https://slavagitproflow.localtunnel.me/deployment/webhook/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNsYXZhaGF0bnVrZSIsInJlcG8iOiJzbGF2YWhhdG51a2UvZ2ZwIiwic2VydmljZSI6ImdpdGh1YiIsImlhdCI6MTUxNTExMzQ3MCwiZXhwIjoyMTQ2MjY1NDcwfQ.GNeeLoUSv7uBbtl8tjsLnVhqKTqp2yQU04uxsFtT5oE"; \
-              export GITFLOWPRO_DEPLOYMENT_ENVIRONMENT="staging"; \
-              export GITFLOWPRO_DEPLOYMENT_SERVICE="github"; \
-              export GITFLOWPRO_DEPLOYMENT_BRANCH="${CIRCLE_BRANCH}"; \
-              \
-              curl \
-                  -H "Content-Type: application/json" \
-                  -X POST \
-                  -d "{ \
-                       \"service\": \"${GITFLOWPRO_DEPLOYMENT_SERVICE}\", \
-                       \"branch\": \"${GITFLOWPRO_DEPLOYMENT_BRANCH}\", \
-                       \"environment\": \"${GITFLOWPRO_DEPLOYMENT_ENVIRONMENT}\" \
-                   }" \
-                  "${GITFLOWPRO_DEPLOYMENT_WEBHOOK}" ;
+              GFP_DEPLOYMENT_ENVIRONMENT=staging; curl -H "Content-Type: application/json" -X POST -d "{\"branch\":\"${CIRCLE_BRANCH}\", \"environment\":\"${GFP_DEPLOYMENT_ENVIRONMENT}\" }" https://slavagitproflow.localtunnel.me/deployment/webhook/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNsYXZhaGF0bnVrZSIsInJlcG8iOiJzbGF2YWhhdG51a2UvZ2ZwIiwic2VydmljZSI6ImdpdGh1YiIsImlhdCI6MTUxNTY5ODA5OSwiZXhwIjoyMTQ2ODUwMDk5fQ.EvNP2FRm1_T7QX547qNFDOpldI_09g9rv_nAfU3i74M;
             fi
 
       - deploy:
-          name: Production deployment
+          name: Production
           command: |
             if [ "${CIRCLE_BRANCH}" == "production" ]; then
-              echo "production > Deployment here ....";
-
-              export GITFLOWPRO_DEPLOYMENT_WEBHOOK="https://slavagitproflow.localtunnel.me/deployment/webhook/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNsYXZhaGF0bnVrZSIsInJlcG8iOiJzbGF2YWhhdG51a2UvZ2ZwIiwic2VydmljZSI6ImdpdGh1YiIsImlhdCI6MTUxNTExMzQ3MCwiZXhwIjoyMTQ2MjY1NDcwfQ.GNeeLoUSv7uBbtl8tjsLnVhqKTqp2yQU04uxsFtT5oE"; \
-              export GITFLOWPRO_DEPLOYMENT_ENVIRONMENT="production"; \
-              export GITFLOWPRO_DEPLOYMENT_SERVICE="github"; \
-              export GITFLOWPRO_DEPLOYMENT_BRANCH="${CIRCLE_BRANCH}"; \
-              \
-              curl \
-                  -H "Content-Type: application/json" \
-                  -X POST \
-                  -d "{ \
-                       \"service\": \"${GITFLOWPRO_DEPLOYMENT_SERVICE}\", \
-                       \"branch\": \"${GITFLOWPRO_DEPLOYMENT_BRANCH}\", \
-                       \"environment\": \"${GITFLOWPRO_DEPLOYMENT_ENVIRONMENT}\" \
-                   }" \
-                  "${GITFLOWPRO_DEPLOYMENT_WEBHOOK}" ;
+              GFP_DEPLOYMENT_ENVIRONMENT=production; curl -H "Content-Type: application/json" -X POST -d "{\"branch\":\"${CIRCLE_BRANCH}\", \"environment\":\"${GFP_DEPLOYMENT_ENVIRONMENT}\" }" https://slavagitproflow.localtunnel.me/deployment/webhook/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNsYXZhaGF0bnVrZSIsInJlcG8iOiJzbGF2YWhhdG51a2UvZ2ZwIiwic2VydmljZSI6ImdpdGh1YiIsImlhdCI6MTUxNTY5ODA5OSwiZXhwIjoyMTQ2ODUwMDk5fQ.EvNP2FRm1_T7QX547qNFDOpldI_09g9rv_nAfU3i74M;
             fi
